@@ -45,7 +45,16 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: "login", redirectTo: "pages", pathMatch: "full" },
+  {
+    path: "login",
+    component: NbAuthComponent,
+    children: [
+      {
+        path: "",
+        component: NbLoginComponent,
+      },
+    ],
+  },
   { path: "", redirectTo: "pages", pathMatch: "full" },
   { path: "**", redirectTo: "pages" },
 ];
