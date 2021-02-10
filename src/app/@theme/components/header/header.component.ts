@@ -67,9 +67,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         map(({ item: { title } }) => title)
       )
       .subscribe((title) => {
-        console.log(this.authService.isAuthenticated());
-        // if (title == "Log out") this.authService.logout("email");
-        console.log(this.authService.logout("email").subscribe(console.log));
+        if (title == "Log out") {
+          localStorage.removeItem("auth_app_token");
+          window.location.href = "/login";
+        }
       });
 
     this.currentTheme = this.themeService.currentTheme;
